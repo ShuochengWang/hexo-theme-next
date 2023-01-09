@@ -9,7 +9,11 @@
       {%- set builtin = ['wechatpay', 'alipay', 'paypal', 'bitcoin'] %}
       {%- set translation = __('reward.' + name) if builtin.includes(name) else name %}
       <div>
+        {% if name == 'paypal' %}
+        <a href="{{ url_for(image) }}"">{{ url_for(image) }}</a> 
+        {% else %}
         <img src="{{ url_for(image) }}" alt="{{ author }} {{ translation }}">
+        {% endif %}
         <span>{{ translation }}</span>
       </div>
     {%- endfor %}
